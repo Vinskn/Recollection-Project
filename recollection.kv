@@ -1,0 +1,106 @@
+ManageSCR
+<ManageSCR>:
+    Pg_login:
+    Pg_main:
+
+<Pg_login>:
+    name : 'Pg_login'
+    canvas.before:
+        Color:
+            rgba: (1/255, 0, 72/255, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        orientation:'vertical'
+        spacing: '10dp'
+        pos_hint: {'center_y': 0.5, 'center_x': 0.5}
+        Label:
+            text: 'Recollection'
+            font_size: 50
+            font_name: 'JustMeAgainDownHere-Regular.ttf'
+
+        CustomTI:
+            id: usrnme
+            hint_text: 'Username'
+            size_hint: .5, None
+            height: 50
+            pos_hint: {'center_x' : .5}
+            background_color: (0,0,0,0)
+            foreground_color: 'FFFFFF' #Warna tulisan
+            hint_text_color: 'FFFFFF'
+
+        CustomTI:
+            id: pswd
+            hint_text: 'Password'
+            size_hint: .5, None
+            height: 50
+            pos_hint: {'center_x' : .5}
+            foreground_color: 'FFFFFF' #Warna tulisan
+            hint_text_color: 'FFFFFF'
+
+        RndBTN:
+            id: log
+            text: 'Login'
+            size_hint: .2, .02
+            pos_hint: {'center_x' : .5}
+            background_color: '#090088'
+            on_press: root.database()
+
+        GridLayout:
+            cols: 2
+            row_force_default: True
+            row_default_height: 40
+            Label:
+                text:'New Member?'
+            Button:
+                text: "Join Us!"
+                background_color: (0,0,0,0)
+                on_press: root.manager.current = 'Pg_main'
+
+<Pg_main>:
+    name: 'Pg_main'
+    BoxLayout:
+        orientation: 'vertical'
+    Label:
+        text:'Halaman ini akan tersedia nanti'
+        font_size: 50
+
+    Button:
+        text: 'Kembali'
+        on_press: root.manager.current = 'Pg_login'
+        size_hint: 1,.2
+
+
+
+
+#--------------------------------------------------------------------------------------------------
+# Membuat Border Button
+
+<RndBTN@Button>
+    background_color: (0,0,0,1)  #Harus ada
+    background_normal: '' #Harus ada
+    canvas.before:
+        Color:
+            rgba: self.background_color # Agar tidak ditimpa warnanya
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [20]
+#--------------------------------------------------------------------------------------------------
+
+#--------------------------------------------------------------------------------------------------
+
+# Custom text input
+
+<CustomTI@TextInput>
+    background_color: 0, 0, 0, 0  # Mengatur latar belakang menjadi transparan
+    foreground_color: 1, 1, 1, 1  # Mengatur warna teks menjadi putih
+
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1  # Warna garis bawah (putih)
+        Line:
+            points: self.x, self.y + self.height-30, self.x + self.width, self.y + self.height-30
+
+#--------------------------------------------------------------------------------------------------
