@@ -45,7 +45,7 @@ ManageSCR
             size_hint: .2, .02
             pos_hint: {'center_x' : .5}
             background_color: '#090088'
-            on_press: root.database()
+            on_press: root.data()
 
         GridLayout:
             cols: 2
@@ -62,14 +62,15 @@ ManageSCR
     name: 'Pg_main'
     BoxLayout:
         orientation: 'vertical'
-    Label:
-        text:'Halaman ini akan tersedia nanti'
-        font_size: 50
+        Button:
+            text: 'Log Out'
+            on_press: root.manager.current = 'Pg_login'
+            size_hint: .3,.1
+            pos_hint: {'right' : 1}
 
-    Button:
-        text: 'Kembali'
-        on_press: root.manager.current = 'Pg_login'
-        size_hint: 1,.2
+        Label:
+            text:'Halaman ini akan tersedia nanti'
+            font_size: 50
 
 
 
