@@ -2,11 +2,9 @@ from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.core.window import Window
-Window.size = (720,1280)
+Window.size = (720,1280)    
 
-
-class Pg_login (Screen):
-    
+class Pg_log (Screen):
     def database (self):
         user = ['admin', 'meta']
         password = ['key', 'yuki']
@@ -28,14 +26,13 @@ class Pg_login (Screen):
 
         if result != -1:
             self.manager.current = 'Pg_main'
+            self.ids.usrnme.text = ''
+            self.ids.pswd.text = ''
         else:
             print('Tidak Ada')
-    
-    
 
- 
-            
-            
+class Pg_Siup (Screen):
+    pass
 
 class Pg_main (Screen): 
     pass

@@ -1,62 +1,109 @@
 ManageSCR
 <ManageSCR>:
-    Pg_login:
+    Pg_log:
+    Pg_Siup:
     Pg_main:
 
-<Pg_login>:
-    name : 'Pg_login'
+# --------------------------- Halaman Login -------------------------------------------------------
+<Pg_log>:
+    name: 'Pg_log'
     canvas.before:
         Color:
-            rgba: (1/255, 0, 72/255, 1)
+            rgba: (255, 255, 255, 1)
         Rectangle:
             pos: self.pos
             size: self.size
-    BoxLayout:
-        orientation:'vertical'
-        spacing: '10dp'
-        pos_hint: {'center_y': 0.5, 'center_x': 0.5}
+    FloatLayout:
+        # Bagian Opening
         Label:
-            text: 'Recollection'
+            text: "Good to see you!"
             font_size: 50
-            font_name: 'JustMeAgainDownHere-Regular.ttf'
+            size_hint_y: None #Menghapus padding sekitar label
+            color: '000000'
+            pos_hint: {'top': .88}
 
-        CustomTI:
+        Label:
+            text:"Let's continue the journey"
+            font_size: 25
+            size_hint_y: None
+            color: '000000'
+            pos_hint: {"top": .8}
+
+        # Bagian Username
+        Label:
+            text:'Username'
+            font_size: 15
+            size_hint_y: None
+            size_hint_x: None
+            color: '000000'
+            pos_hint: {'top': .6, 'x': .079}
+
+        TextInput:
             id: usrnme
-            hint_text: 'Username'
-            size_hint: .5, None
-            height: 50
-            pos_hint: {'center_x' : .5}
-            background_color: (0,0,0,0)
-            foreground_color: 'FFFFFF' #Warna tulisan
-            hint_text_color: 'FFFFFF'
+            hint_text:'Username Anda'
+            size_hint_x: .8
+            size_hint_y: None
+            height: 45
+            pos_hint: {'top': .52, 'x': .1}
 
-        CustomTI:
+        # Bagian Password
+        Label:
+            text:'Password'
+            font_size: 15
+            size_hint_y: None
+            size_hint_x: None
+            color: '000000'
+            pos_hint: {'top': .5, 'x': .079}
+
+        TextInput:
             id: pswd
-            hint_text: 'Password'
-            size_hint: .5, None
-            height: 50
-            pos_hint: {'center_x' : .5}
-            foreground_color: 'FFFFFF' #Warna tulisan
-            hint_text_color: 'FFFFFF'
+            hint_text:'Password Anda'
+            size_hint_x: .8
+            size_hint_y: None
+            height: 45
+            pos_hint: {'top': .42, 'x': .1}
+            password: True
 
-        RndBTN:
-            id: log
+        # Tombol login
+        Button:
             text: 'Login'
-            size_hint: .2, .02
-            pos_hint: {'center_x' : .5}
-            background_color: '#090088'
+            size_hint_x: .8
+            size_hint_y: None
+            height: 50
+            pos_hint: {'top': .3, 'x': .1}
+            background_color: '#1F3C88'
             on_press: root.data()
 
-        GridLayout:
-            cols: 2
-            row_force_default: True
-            row_default_height: 40
-            Label:
-                text:'New Member?'
-            Button:
-                text: "Join Us!"
-                background_color: (0,0,0,0)
-                on_press: root.manager.current = 'Pg_main'
+        #Bagian Sign Up
+        Label:
+            text: "Don't have an account?"
+            font_size: 12
+            color: '000000'
+            size_hint_y: None
+            pos_hint: {'top': .275, 'x': .01}
+
+        Button:
+            text: 'Sign Up'
+            font_size: 12
+            color: '000000'
+            background_color: (0,0,0,0)
+            size_hint_y: None
+            pos_hint: {'top': .25, 'x': .01}
+
+# --------------------------- Akhir Halaman Login -------------------------------------------------
+
+#----------------------------- Page SignUp -------------------------------------------------
+
+<Pg_Siup>:
+    name: 'Pg_Siup'
+    FloatLayout:
+        Label:
+            text:'Welcome!'
+            font_size: 
+
+#----------------------------- Akhir Page SignUp -------------------------------------------
+
+
 
 <Pg_main>:
     name: 'Pg_main'
@@ -64,7 +111,7 @@ ManageSCR
         orientation: 'vertical'
         Button:
             text: 'Log Out'
-            on_press: root.manager.current = 'Pg_login'
+            on_press: root.manager.current = 'Pg_log'
             size_hint: .3,.1
             pos_hint: {'right' : 1}
 
@@ -75,7 +122,15 @@ ManageSCR
 
 
 
-#--------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+#----------------------------------------------------------------------------------------------
 # Membuat Border Button
 
 <RndBTN@Button>
