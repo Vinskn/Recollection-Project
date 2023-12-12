@@ -89,35 +89,161 @@ ManageSCR
             background_color: (0,0,0,0)
             size_hint_y: None
             pos_hint: {'top': .25, 'x': .01}
+            on_press: root.manager.current = 'Pg_Siup'
 
 # --------------------------- Akhir Halaman Login -------------------------------------------------
 
 #----------------------------- Page SignUp -------------------------------------------------
-
 <Pg_Siup>:
     name: 'Pg_Siup'
+    canvas.before:
+        Color:
+            rgba: (255, 255, 255, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
     FloatLayout:
+        #Bagian atas
         Label:
             text:'Welcome!'
-            font_size: 
+            font_size: 50
+            size_hint_y: None
+            color: '000000'
+            pos_hint: {'top': .88}
+
+        Label:
+            text:"Let's continue the journey"
+            font_size: 25
+            size_hint_y: None
+            color: '000000'
+            pos_hint: {"top": .8}
+
+        #Bagian data---
+        # Part Username
+        Label:
+            text:'Username'
+            font_size: 15
+            size_hint_y: None
+            size_hint_x: None
+            color: '000000'
+            pos_hint: {'top': .66, 'x': .079}
+
+        TextInput:
+            id: su_usrnm
+            hint_text:'Buat Username Anda'
+            size_hint_x: .8
+            size_hint_y: None
+            height: 45
+            pos_hint: {'top': .58, 'x': .1}
+
+        #Part email
+        Label:
+            text:'Email'
+            font_size: 15
+            size_hint_y: None
+            size_hint_x: None
+            color: '000000'
+            pos_hint: {'top': .56, 'x': 0.06}
+
+        TextInput:
+            id: email
+            hint_text:'Masukan Email Anda'
+            size_hint_x: .8
+            size_hint_y: None
+            height: 45
+            pos_hint: {'top': .48, 'x': .1}
+
+        #Part Password
+        Label:
+            text: 'Password'
+            font_size: 15
+            size_hint_y: None
+            size_hint_x: None
+            color: '000000'
+            pos_hint: {'top': .46, 'x': 0.08}
+
+        TextInput:
+            id: su_pswd
+            hint_text:'Buat Password Anda'
+            size_hint_x: .8
+            size_hint_y: None
+            height: 45
+            pos_hint: {'top': .38, 'x': .1}
+            password: True
+
+        # Tombol sign up
+        Button:
+            text: 'Sign Up'
+            size_hint_x: .8
+            size_hint_y: None
+            height: 50
+            pos_hint: {'top': .255, 'x': .1}
+            background_color: '#1F3C88'
+            on_press: root.signup()
+
+        # Pindah login
+        Label:
+            text:'Already have an account?'
+            font_size: 12
+            size_hint_y: None
+            color: '000000'
+            pos_hint: {'top': .23, 'x': .01}
+
+        Button:
+            text: 'Log In'
+            font_size: 12
+            color: '000000'
+            size_hint_y: None
+            background_color: (0,0,0,0)
+            pos_hint: {'top': .2, 'x': .01}
+            on_press: root.manager.current = 'Pg_log'
+
+
 
 #----------------------------- Akhir Page SignUp -------------------------------------------
 
+#----------------------------- PopUp SignUp -------------------------------------------
+<Pop_siup>:
+    title: 'Akun Telah Dibuat!!'
+    FloatLayout:
+        Label:
+            text:'Berhasil!'
+            font_name: 'JustMeAgainDownHere-Regular.ttf'
+            size_hint_y: None
+            font_size: 70
+            pos_hint: {'top': .88 }
 
+        Button:
+            text: 'Login'
+            font_size: 20
+            background_color: '#1F3C88'
+            size_hint: .8,.3
+            pos_hint: {'top': .6, 'center_x': .5}
+            # size_hint_y
+            on_press: root.dismiss()
+#----------------------------- Akhir PopUp SignUp -------------------------------------------
 
+# ----------------------------- Main Page -------------------------------------------
 <Pg_main>:
     name: 'Pg_main'
-    BoxLayout:
-        orientation: 'vertical'
-        Button:
-            text: 'Log Out'
-            on_press: root.manager.current = 'Pg_log'
-            size_hint: .3,.1
-            pos_hint: {'right' : 1}
-
+    FloatLayout:
         Label:
-            text:'Halaman ini akan tersedia nanti'
+            text:'Halaman ini belum Tersedia'
             font_size: 50
+            size_hint_y: None
+            pos_hint: {'top': .88 }
+        Button:
+            text: 'Kembali'
+            font_size: 20
+            background_color: '#1F3C88'
+            size_hint: .8,.3
+            pos_hint: {'top': .6, 'center_x': .5}
+            on_press: root.manager.current = 'Pg_log'
+        # Label:
+            # text:'Hello, ' + app.root.ids.usrnme.text
+
+
+# ----------------------------- Main Page -------------------------------------------
 
 
 
