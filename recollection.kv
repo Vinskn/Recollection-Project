@@ -3,6 +3,7 @@ ManageSCR
     Pg_log:
     Pg_Siup:
     Pg_main:
+    Pg_acc:
 
 # --------------------------- Halaman Login -------------------------------------------------------
 <Pg_log>:
@@ -24,54 +25,51 @@ ManageSCR
 
         Label:
             text:"Let's continue the journey"
-            font_size: 25
+            font_size: 19
             size_hint_y: None
             color: '000000'
-            pos_hint: {"top": .8}
+            pos_hint: {"top": .82}
 
         # Bagian Username
-        Label:
-            text:'Username'
-            font_size: 15
-            size_hint_y: None
-            size_hint_x: None
-            color: '000000'
-            pos_hint: {'top': .6, 'x': .079}
-
-        TextInput:
+        MDTextField:
             id: usrnme
             hint_text:'Username Anda'
             size_hint_x: .8
             size_hint_y: None
-            height: 45
-            pos_hint: {'top': .52, 'x': .1}
+            pos_hint: {'top': .54, 'center_x': .5}
+            mode: 'rectangle'
+            multiline: False
+            required: True
+            helper_text_mode: 'on_error'
+            helper_text: 'Masukan Username Anda'
+            max_text_length: 10
+            line_color_normal: '#070D59'
+            text_color_normal: '000000'
+
 
         # Bagian Password
-        Label:
-            text:'Password'
-            font_size: 15
-            size_hint_y: None
-            size_hint_x: None
-            color: '000000'
-            pos_hint: {'top': .5, 'x': .079}
-
-        TextInput:
+        MDTextField:
             id: pswd
             hint_text:'Password Anda'
             size_hint_x: .8
             size_hint_y: None
-            height: 45
-            pos_hint: {'top': .42, 'x': .1}
+            pos_hint: {'top': .43, 'center_x': .5}
             password: True
+            mode: 'rectangle'
+            multiline: False
+            required: True
+            helper_text_mode: 'on_error'
+            helper_text: 'Masukan Username Anda'
+            max_text_length: 10
 
         # Tombol login
-        Button:
+        MDRaisedButton:
             text: 'Login'
             size_hint_x: .8
             size_hint_y: None
             height: 50
             pos_hint: {'top': .3, 'x': .1}
-            background_color: '#1F3C88'
+            md_bg_color: '#1C377D'
             on_press: root.data()
 
         #Bagian Sign Up
@@ -120,21 +118,17 @@ ManageSCR
 
         #Bagian data---
         # Part Username
-        Label:
-            text:'Username'
-            font_size: 15
-            size_hint_y: None
-            size_hint_x: None
-            color: '000000'
-            pos_hint: {'top': .66, 'x': .079}
-
-        TextInput:
+        MDTextField:
             id: su_usrnm
             hint_text:'Buat Username Anda'
             size_hint_x: .8
             size_hint_y: None
             height: 45
-            pos_hint: {'top': .58, 'x': .1}
+            pos_hint: {'top': .6, 'x': .1}
+            mode: 'rectangle'
+            multiline: False
+            required: True
+            max_text_length: 10
 
         #Part email
         Label:
@@ -226,30 +220,154 @@ ManageSCR
 # ----------------------------- Main Page -------------------------------------------
 <Pg_main>:
     name: 'Pg_main'
+    canvas.before:
+        Color:
+            rgba: (255, 255, 255, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
     FloatLayout:
         Label:
-            text:'Halaman ini belum Tersedia'
-            font_size: 50
+            text:'Hello, '
             size_hint_y: None
-            pos_hint: {'top': .88 }
-        Button:
-            text: 'Kembali'
-            font_size: 20
-            background_color: '#1F3C88'
-            size_hint: .8,.3
-            pos_hint: {'top': .6, 'center_x': .5}
-            on_press: root.manager.current = 'Pg_log'
-        # Label:
-            # text:'Hello, ' + app.root.ids.usrnme.text
+            size_hint_x: None
+            pos_hint: {'top' : 1, 'left': 1}
+            font_size: 24
+            color: '000000'
+
+        Image:
+            source: 'D:\\Kevin\\Codding\\Code\\kivyEnv\\Recollection\\profil.png'
+            size: '50dp', '50dp'
+            size_hint_y: None
+            pos_hint: {'top': .97, 'right': 1.42}
+
+        Image:
+            source: 'D:\\Kevin\\Codding\\Code\kivyEnv\\Recollection\\bgclr.png'
+            size: '800dp','100dp'
+            size_hint_y: None
+            pos_hint: {'top': .85}
+
+        TextInput:
+            id: cari_item
+            hint_text: 'Search...'
+            size_hint_y: None
+            height: 45
+            size_hint_x: .8
+            pos_hint: {'top': .7, 'center_x': .5}
+            color: '000000'
+
+        MDIconButton:
+            icon: 'magnify'
+            size_hint_y: None
+            size_hint_x: .1
+            pos_hint: {'top': .7, 'center_x': .87}
+
+        # GridLayout: #Produk 1
+        #     cols: 2
+        #     pos_hint: {'top': .69}
+        #     rows_default_height: 40
+        #     Image:
+        #         source: 'D:\\Kevin\\Codding\\Code\kivyEnv\\Recollection\\noimage.png'
+        #         size_hint_x: .2
+        #         size_hint_y: None
+        #     GridLayout:
+        #         cols: 1
+        #         Button:
+        #             text:'Judul Catatan'
+        #             font_size: 20
+        #             color: '000000'
+        #             background_color: (0,0,0,0)
+        #         Label:
+        #             text: 'deskripsi catatan'
+        #             font_size: 10
+        #             color: '000000'
+
+        MDIconButton:
+            icon: 'home'
+            pos_hint:{'top': .1, 'center_x': .4}
+
+        MDIconButton:
+            icon: 'account-circle-outline'
+            pos_hint:{'top': .1, 'center_x': .6}
+            on_press: root.manager.current = 'Pg_acc'
 
 
-# ----------------------------- Main Page -------------------------------------------
+
+# ----------------------------- Akhir Main Page -------------------------------------------
 
 
+# ----------------------------- Account Page -------------------------------------------
+<Pg_acc>:
+    name: 'Pg_acc'
+    canvas.before:
+        Color:
+            rgba: (255, 255, 255, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
 
+    FloatLayout:
+        MDIconButton:
+            icon: 'home-outline'
+            pos_hint:{'top': .1, 'center_x': .4}
+            on_press: root.manager.current = 'Pg_main'
 
+        MDIconButton:
+            icon: 'account'
+            pos_hint:{'top': .1, 'center_x': .6}
 
+        Label:
+            text:'Your Account'
+            font_size: 30
+            size_hint_y: None
+            pos_hint: {'top': .98, 'center_x': .5}
+            color: '000000'
 
+        Image:
+            source: 'D:\\Kevin\\Codding\\Code\kivyEnv\\Recollection\\profil.png'
+            size_hint_y: None
+            size_hint_x: .5
+            pos_hint: {'top': .8, 'center_x': .5}
+
+        Label:
+            text: 'Acc Name'
+            font_size: 30
+            size_hint_y: None
+            color: '000000'
+            pos_hint: {'top': .63, 'center_x': .5}
+
+        MDLabel:
+            text:'Email'
+            font_size: 15
+            color: '000000'
+            size_hint_y: None
+            pos_hint: {'top': .53, 'center_x': .6}
+
+        MDLabel:
+            text: ' Nama Email'
+            font_size: 15
+            size_hint_y: None
+            size_hint_x: .8
+            height: 50
+            pos_hint: {'top': .45, 'center_x': .5}
+            canvas.before:
+                Color:
+                    rgba: 110/255, 141/255, 222/255, 1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [5,5,5,5]
+
+        MDRaisedButton:
+            text: 'Your History'
+            md_bg_color: '#070E5F'
+            pos_hint: {'top': .35, 'center_x': .5}
+            size_hint_y: None
+            size_hint_x: .6
+            height: 60
+
+# ----------------------------- Akhir Account Page -------------------------------------------
 
 
 
