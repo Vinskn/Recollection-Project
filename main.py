@@ -3,9 +3,10 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.core.window import Window
-from kivy.uix.popup import Popup
+from kivy.uix.image import Image
 
 from kivymd.app import MDApp
+from kivymd.uix.dialog import MDDialog
 
 Window.size = (720, 1280)
 
@@ -49,17 +50,20 @@ class Pg_Siup(Screen):
         pg_log_screen.user.append(ambil_user)
         pg_log_screen.password.append(ambil_pswd)
 
-        Pop_siup().open()
+        Dialog_siup().open()
         self.manager.current = "Pg_log"
 
         self.ids.su_usrnm.text = ""
         self.ids.su_pswd.text = ""
 
 
-class Pop_siup(Popup):
+class Dialog_siup(MDDialog):
     pass
 
 class Pg_main(Screen):
+    pass
+    
+class Pg_product(Screen):
     pass
 
 class Pg_acc(Screen):

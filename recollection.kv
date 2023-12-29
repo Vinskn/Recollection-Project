@@ -1,8 +1,10 @@
+#: import Snackbar kivymd.uix.snackbar.Snackbar
 ManageSCR
 <ManageSCR>:
     Pg_log:
     Pg_Siup:
     Pg_main:
+    Pg_product:
     Pg_acc:
 
 # --------------------------- Halaman Login -------------------------------------------------------
@@ -131,42 +133,33 @@ ManageSCR
             max_text_length: 10
 
         #Part email
-        Label:
-            text:'Email'
-            font_size: 15
-            size_hint_y: None
-            size_hint_x: None
-            color: '000000'
-            pos_hint: {'top': .56, 'x': 0.06}
-
-        TextInput:
+        MDTextField:
             id: email
             hint_text:'Masukan Email Anda'
             size_hint_x: .8
             size_hint_y: None
             height: 45
-            pos_hint: {'top': .48, 'x': .1}
+            pos_hint: {'top': .5, 'x': .1}
+            mode: 'rectangle'
+            multiline: False
+            required: True
 
         #Part Password
-        Label:
-            text: 'Password'
-            font_size: 15
-            size_hint_y: None
-            size_hint_x: None
-            color: '000000'
-            pos_hint: {'top': .46, 'x': 0.08}
-
-        TextInput:
+        MDTextField:
             id: su_pswd
             hint_text:'Buat Password Anda'
             size_hint_x: .8
             size_hint_y: None
             height: 45
-            pos_hint: {'top': .38, 'x': .1}
+            pos_hint: {'top': .4, 'x': .1}
             password: True
+            mode: 'rectangle'
+            multiline: False
+            required: True
+            max_text_length: 10
 
         # Tombol sign up
-        Button:
+        MDRaisedButton:
             text: 'Sign Up'
             size_hint_x: .8
             size_hint_y: None
@@ -197,24 +190,9 @@ ManageSCR
 #----------------------------- Akhir Page SignUp -------------------------------------------
 
 #----------------------------- PopUp SignUp -------------------------------------------
-<Pop_siup>:
-    title: 'Akun Telah Dibuat!!'
-    FloatLayout:
-        Label:
-            text:'Berhasil!'
-            font_name: 'JustMeAgainDownHere-Regular.ttf'
-            size_hint_y: None
-            font_size: 70
-            pos_hint: {'top': .88 }
-
-        Button:
-            text: 'Login'
-            font_size: 20
-            background_color: '#1F3C88'
-            size_hint: .8,.3
-            pos_hint: {'top': .6, 'center_x': .5}
-            # size_hint_y
-            on_press: root.dismiss()
+<Dialog_siup>:
+    title: 'SUCCESS'
+    text: 'Your Account was Successfully Creted'
 #----------------------------- Akhir PopUp SignUp -------------------------------------------
 
 # ----------------------------- Main Page -------------------------------------------
@@ -236,17 +214,14 @@ ManageSCR
             font_size: 24
             color: '000000'
 
-        Image:
-            source: 'D:\\Kevin\\Codding\\Code\\kivyEnv\\Recollection\\profil.png'
-            size: '50dp', '50dp'
-            size_hint_y: None
-            pos_hint: {'top': .97, 'right': 1.42}
+        MDIconButton:
+            icon: 'account-circle'
+            pos_hint: {'top': .98, 'right': 1}
 
         Image:
-            source: 'D:\\Kevin\\Codding\\Code\kivyEnv\\Recollection\\bgclr.png'
-            size: '800dp','100dp'
+            source: 'D:\\Kevin\\Codding\\Code\\kivyEnv\\Recollection\\Sources\\main.png'
             size_hint_y: None
-            pos_hint: {'top': .85}
+            pos_hint: {'top': .84, 'center_x': .5}
 
         TextInput:
             id: cari_item
@@ -254,34 +229,77 @@ ManageSCR
             size_hint_y: None
             height: 45
             size_hint_x: .8
-            pos_hint: {'top': .7, 'center_x': .5}
+            pos_hint: {'top': .68, 'center_x': .5}
             color: '000000'
 
         MDIconButton:
             icon: 'magnify'
             size_hint_y: None
             size_hint_x: .1
-            pos_hint: {'top': .7, 'center_x': .87}
+            pos_hint: {'top': .68, 'center_x': .8}
+            size_hint: (None, None)
+            size: (1000, 1000)
 
-        # GridLayout: #Produk 1
-        #     cols: 2
-        #     pos_hint: {'top': .69}
-        #     rows_default_height: 40
-        #     Image:
-        #         source: 'D:\\Kevin\\Codding\\Code\kivyEnv\\Recollection\\noimage.png'
-        #         size_hint_x: .2
-        #         size_hint_y: None
-        #     GridLayout:
-        #         cols: 1
-        #         Button:
-        #             text:'Judul Catatan'
-        #             font_size: 20
-        #             color: '000000'
-        #             background_color: (0,0,0,0)
-        #         Label:
-        #             text: 'deskripsi catatan'
-        #             font_size: 10
-        #             color: '000000'
+        #Produk---- 1
+        Image:
+            source: 'D:\\Kevin\\Codding\\Code\\kivyEnv\\Recollection\\Sources\\book.png'
+            size_hint_y: None
+            pos_hint: { 'top': .58, 'center_x': .2}
+
+        MDFlatButton:
+            text:'Pengantar Perangkat Lunak'
+            font_size: 20
+            color: '000000'
+            pos_hint: {'top': .56, 'center_x': .46}
+            size_hint_y: None
+            on_press: root.manager.current = 'Pg_product'
+
+        Label:
+            text:'Catatan Pertemuan 1'
+            font_size: 12
+            color: '000000'
+            pos_hint: {'center_x': .371}
+
+        #Produk---- 2
+        Image:
+            source: 'D:\\Kevin\\Codding\\Code\\kivyEnv\\Recollection\\Sources\\book.png'
+            size_hint_y: None
+            pos_hint: { 'top': .42, 'center_x': .2}
+
+        MDFlatButton:
+            text:'Pengantar Perangkat Lunak'
+            font_size: 20
+            color: '000000'
+            pos_hint: {'top': .4, 'center_x': .46}
+            size_hint_y: None
+
+        Label:
+            text:'Catatan Pertemuan 1'
+            font_size: 12
+            color: '000000'
+            pos_hint: {'top': .4, 'center_x': .371}
+            size_hint_y: None
+
+        #Produk---- 3
+        Image:
+            source: 'D:\\Kevin\\Codding\\Code\\kivyEnv\\Recollection\\Sources\\book.png'
+            size_hint_y: None
+            pos_hint: { 'top': .26, 'center_x': .2}
+
+        MDFlatButton:
+            text:'Pengantar Perangkat Lunak'
+            font_size: 20
+            color: '000000'
+            pos_hint: {'top': .24, 'center_x': .46}
+            size_hint_y: None
+
+        Label:
+            text:'Catatan Pertemuan 1'
+            font_size: 12
+            color: '000000'
+            pos_hint: {'top': .24, 'center_x': .371}
+            size_hint_y: None
+
 
         MDIconButton:
             icon: 'home'
@@ -295,6 +313,94 @@ ManageSCR
 
 
 # ----------------------------- Akhir Main Page -------------------------------------------
+
+
+# ----------------------------- Product Page -------------------------------------------
+<Pg_product>:
+    name: 'Pg_product'
+    canvas.before:
+        Color:
+            rgba: (255, 255, 255, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    FloatLayout:
+        MDIconButton:
+            icon: 'arrow-left'
+            size_hint_y: None
+            pos_hint: {'top': .964}
+
+        Label:
+            text:'Product'
+            size_hint_y: None
+            pos_hint: {'top': 1, 'center_x': .1}
+            color: '000000'
+            font_size: 16
+
+
+        Image:
+            source: 'D:\\Kevin\\Codding\\Code\\kivyEnv\\Recollection\\Sources\\product.png'
+            size_hint_x: None
+            size_hint_y: None
+            pos_hint: {'top': .9 , 'center_x': .5}
+            width: 650
+            height: 250
+            allow_stretch: True
+            keep_ratio: False
+
+        Label:
+            text:'Pengantar Perangkat Lunak 1 Part 1 .... .pdf'
+            font_size: 15
+            size_hint_y: None
+            pos_hint: {'top': .6, 'center_x': .24}
+            color: '000000'
+
+        MDRoundFlatIconButton:
+            icon: 'download'
+            text: 'Download File'
+            size_hint_y: None
+            theme_text_color: 'Custom'
+            text_color: 'white'
+            line_color: '#070E5F'
+            theme_icon_color: 'Custom'
+            icon_color: 'white'
+            md_bg_color: '#070E5F'
+            pos_hint: {'top': .5, 'center_x': .15}
+
+        MDRoundFlatIconButton:
+            icon: 'wallet-giftcard'
+            text: ' Appreciate  '
+            size_hint_y: None
+            theme_text_color: 'Custom'
+            text_color: 'white'
+            line_color: '#070E5F'
+            theme_icon_color: 'Custom'
+            icon_color: 'white'
+            md_bg_color: '#070E5F'
+            pos_hint: {'top': .5, 'center_x': .35}
+
+        Label:
+            text:'Description'
+            font_size: 15
+            size_hint_y: None
+            pos_hint: {'top': .48, 'center_x': .15}
+            color: '000000'
+
+        MDTextField:
+            text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt ut leo id auctor. Suspendisse hendrerit nisi nec purus ultrices, in consectetur justo fermentum. Duis facilisis arcu vitae ligula consequat, vel fermentum dolor bibendum. Aliquam erat volutpat. Sed consequat, metus eget ultrices vehicula, nunc velit varius dui, ac aliquet nisl tellus eu augue. Nulla facilisi. Vivamus sit amet libero vel ligula interdum convallis. Sed eu elit vitae justo hendrerit cursus. Vivamus nec lectus urna. Etiam euismod interdum arcu, a bibendum sem facilisis ac. Morbi vel congue elit. Quisque at euismod libero. Integer facilisis eros vitae elit euismod tincidunt.'
+            multiline: True
+            text_color_normal: 0, 0, 0, 1
+            text_color_focus: 0, 0, 0, 1
+            fill_color_normal: 0.43, 0.55, 0.87, 1
+            fill_color_focus: 0.43, 0.55, 0.87, 1
+            pos_hint: {'top': .4, 'center_x': .5}
+
+
+
+
+
+# ----------------------------- Akhir Product Page -------------------------------------------
 
 
 # ----------------------------- Account Page -------------------------------------------

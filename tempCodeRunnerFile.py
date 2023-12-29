@@ -1,1 +1,1 @@
-Pg_acc
+Pg_product
