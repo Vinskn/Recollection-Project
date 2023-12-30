@@ -1,11 +1,63 @@
 #: import Snackbar kivymd.uix.snackbar.Snackbar
 ManageSCR
 <ManageSCR>:
+    Awal:
     Pg_log:
     Pg_Siup:
     Pg_main:
     Pg_product:
     Pg_acc:
+
+#---------------------------------Halaman Awal---------------------------------------------------
+<Awal>:
+    name: 'Awal'
+    canvas.before:
+        Color:
+            rgba: (255, 255, 255, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    FloatLayout:
+        Image:
+            source: 'D:\\Kevin\\Codding\\Code\\kivyEnv\\Recollection\\Sources\\Vector 4.png'
+            size_hint_x: None
+            size_hint_y: None
+            pos_hint: {'top': .9 , 'center_x': .5}
+            width: 650
+            height: 250
+            allow_stretch: True
+            keep_ratio: True
+
+        Label:
+            text:'R  e  c  o  l  l  e  c  t  i  o  n'
+            bold: True
+            font_size: 30
+            size_hint_y: None
+            pos_hint: {'top': .58, 'center_x': .5}
+            color: '000000'
+
+        Label:
+            text: 'By: Group 7'
+            bold: True
+            font_size: 20
+            size_hint_y: None
+            pos_hint: {'top': .5, 'center_x': .5}
+            color: '000000'
+
+        Label:
+            text:'Press Anywhere to Start'
+            font_size: 15
+            size_hint_y: None
+            pos_hint: {'top': .3, 'center_x': .5}
+            color: '000000'
+
+        Button:
+            background_color: 0,0,0,0
+            size_hint: (1,1)
+            on_press: root.manager.current = 'Pg_log'
+
+
+#---------------------------------Akhir Halaman Awal----------------------------------------------
 
 # --------------------------- Halaman Login -------------------------------------------------------
 <Pg_log>:
@@ -72,7 +124,7 @@ ManageSCR
             height: 50
             pos_hint: {'top': .3, 'x': .1}
             md_bg_color: '#1C377D'
-            on_press: root.data()
+            on_press: root.log_user()
 
         #Bagian Sign Up
         Label:
@@ -92,6 +144,13 @@ ManageSCR
             on_press: root.manager.current = 'Pg_Siup'
 
 # --------------------------- Akhir Halaman Login -------------------------------------------------
+
+# ----------------------------- Popup Akun Tidak Ada ----------------------------------------
+<Pop_NF>:
+    title: 'Akun Tidak Ditemukan'
+    text: 'Periksa Kembali Username atau Password Anda'
+
+# ----------------------------- Popup Akun Tidak Ada ----------------------------------------
 
 #----------------------------- Page SignUp -------------------------------------------------
 <Pg_Siup>:
@@ -166,7 +225,7 @@ ManageSCR
             height: 50
             pos_hint: {'top': .255, 'x': .1}
             background_color: '#1F3C88'
-            on_press: root.signup()
+            on_press: root.enter_data()
 
         # Pindah login
         Label:
@@ -330,6 +389,7 @@ ManageSCR
             icon: 'arrow-left'
             size_hint_y: None
             pos_hint: {'top': .964}
+            on_press: root.manager.current = 'Pg_main'
 
         Label:
             text:'Product'
@@ -379,6 +439,7 @@ ManageSCR
             icon_color: 'white'
             md_bg_color: '#070E5F'
             pos_hint: {'top': .5, 'center_x': .35}
+            on_press: root.pop_apre()
 
         Label:
             text:'Description'
@@ -402,6 +463,13 @@ ManageSCR
 
 # ----------------------------- Akhir Product Page -------------------------------------------
 
+#------------------------------ Pop Up Apreciate ------------------------------------------
+<Dialog_apre>:
+    title: 'Terima Kasih'
+    text: 'Pemberian Anda Sangat Berarti bagi Penulis'
+
+
+# --------------------------- Akhir Pop Up Apreciate -----------------------------------
 
 # ----------------------------- Account Page -------------------------------------------
 <Pg_acc>:
@@ -431,7 +499,7 @@ ManageSCR
             color: '000000'
 
         Image:
-            source: 'D:\\Kevin\\Codding\\Code\kivyEnv\\Recollection\\profil.png'
+            source: 'D:\\Kevin\\Codding\\Code\kivyEnv\\Recollection\\person.png'
             size_hint_y: None
             size_hint_x: .5
             pos_hint: {'top': .8, 'center_x': .5}
