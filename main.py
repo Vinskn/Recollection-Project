@@ -4,6 +4,7 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.core.window import Window
 from kivy.uix.image import Image
+from kivy.clock import Clock
 #--------------------------------------------------------------------
 from kivymd.app import MDApp
 from kivymd.uix.dialog import MDDialog
@@ -33,12 +34,28 @@ class Pg_log(Screen):
             self.ids.pswd.text = ""
             file_path = 'Database.csv'
             fcsv = pd.read_csv(file_path)
-            self.take_user = fcsv['User'][test]
-            self.take_mail = fcsv['Email'][test]
+            app = App.get_running_app()
+            app.take_user = self.take_user = fcsv['User'][test]
+            app.take_mail = self.take_mail = fcsv['Email'][test]
+            Clock.schedule_once(lambda dt: self.update_main_label(), 0.01)
+            Clock.schedule_once(lambda dt: self.update_acc(), 0.01)
+
         else:
             Pop_NF().open()
             self.ids.usrnme.text = ""
             self.ids.pswd.text = ""
+    
+     def update_main_label(self):
+        app = App.get_running_app()
+        get_user = app.take_user
+        self.manager.get_screen('Pg_main').ids.nama_main.text = f'Hallo, {get_user}'
+
+     def update_acc (self):
+        app = App.get_running_app()
+        get_user = app.take_user
+        get_mail = app.take_mail
+        self.manager.get_screen('Pg_acc').ids.user_label.text = get_user
+        self.manager.get_screen('Pg_acc').ids.nama_mail.text = get_mail    
 
 class Pop_NF(MDDialog):
     pass
@@ -82,6 +99,7 @@ class Pg_product(Screen):
         self.ids.product_name.pos_hint = {'top': .6, 'center_x': .11}
         self.ids.product_desc.text = 'Ini adalah catatan materi mata kuliah Pengantar Rekayasa Perangkat Lunak \ntahun ajaran 2023 \nsemester satu (1) \nCatatan ini secara garis besar memberikan pemahaman mengenai...'
         self.ids.product_desc.pos_hint = {'top': .4, 'center_x': .5}
+        self.ids.Download_file.bind(on_press = self.downl_p1)
 
     def produk_2 (self):
         self.manager.current = 'Pg_product'
@@ -97,17 +115,35 @@ class Pg_product(Screen):
         self.ids.product_name.pos_hint = {'top': .6, 'center_x': .13}
         self.ids.product_desc.text = 'Ini adalah catatan materi mata kuliah Kalkulus \ntahun ajaran 2023 \nsemester satu (1) \nCatatan ini secara garis besar memberikan pemahaman mengenai lorem ....'
         self.ids.product_desc.pos_hint = {'top': .4, 'center_x': .5}
+        self.ids.Download_file.bind(on_press = self.downl_p3)
 
-    def downl_p2 (self):
-        src = 'https://raw.githubusercontent.com/AigrettaM/basProgram/main/catatan%20daspro.txt'
+    def downl_p1 (self, instance):
+        src = 'https://raw.githubusercontent.com/Vinskn/Recollection-Project/main/Storage/PRPL.txt'
+        DF (src)
+
+    def downl_p2 (self, instance):
+        src = 'https://raw.githubusercontent.com/Vinskn/Recollection-Project/main/Storage/DasPro.txt'
         DF(src)
+
+    def downl_p3 (self, instance):
+        src = 'https://raw.githubusercontent.com/Vinskn/Recollection-Project/main/Storage/Kalkulus.txt'
+        DF (src)
 
 class Dialog_apre(MDDialog):
     pass
 
 class Pg_acc(Screen):
-#    def update_label_text(self):
-#         self.ids.user_label.text = f"Username: {self.take_user}"
+    def balik (self):
+        Dialog_exit().open()
+        self.manager.current = 'Pg_log'
+
+    def histo (self):
+        Dialog_histo().open()
+
+class Dialog_exit(MDDialog):
+    pass
+
+class Dialog_histo(MDDialog):
     pass
 
 class ManageSCR(ScreenManager):

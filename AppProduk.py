@@ -1,4 +1,4 @@
-def download_file(self, url):
+def download_file(url):
     import requests
     import tkinter as tk
     from tkinter import filedialog
