@@ -10,6 +10,7 @@ from kivymd.uix.dialog import MDDialog
 #--------------------------------------------------------------------
 from AppData import login as log
 from AppData import signup as siup
+from AppProduk import download_file as DF
 #--------------------------------------------------------------------
 import pandas as pd
 #--------------------------------------------------------------------
@@ -89,6 +90,7 @@ class Pg_product(Screen):
         self.ids.product_name.pos_hint = {'top': .6, 'center_x': .19}
         self.ids.product_desc.text = 'Ini adalah catatan materi mata kuliah Dasar Pemrograman \ntahun ajaran 2023-2024 \nsemester satu (1) \nCatatan ini secara garis besar memberikan pemahaman mengenai lorem ipsum....'
         self.ids.product_desc.pos_hint = {'top': .4, 'center_x': .5}
+        self.ids.Download_file.bind(on_press=self.downl_p2) 
 
     def produk_3 (self):
         self.manager.current = 'Pg_product'
@@ -97,6 +99,9 @@ class Pg_product(Screen):
         self.ids.product_desc.text = 'Ini adalah catatan materi mata kuliah Kalkulus \ntahun ajaran 2023 \nsemester satu (1) \nCatatan ini secara garis besar memberikan pemahaman mengenai lorem ....'
         self.ids.product_desc.pos_hint = {'top': .4, 'center_x': .5}
 
+    def downl_p2 (self):
+        src = 'https://raw.githubusercontent.com/AigrettaM/basProgram/main/catatan%20daspro.txt'
+        DF(self, src)
 
 class Dialog_apre(MDDialog):
     pass
