@@ -1,0 +1,15 @@
+Ini adalah catatan Dasar Pemrogrman
+
+
+Cras sed sagittis nisl. Donec tristique, massa sed vestibulum ultrices, risus turpis aliquet massa, at lobortis 
+elit quam id nulla. Pellentesque a aliquam sapien. Interdum et malesuada fames ac ante ipsum primis in faucibus. 
+Fusce laoreet maximus nulla et ornare. Curabitur est augue, tincidunt quis lorem scelerisque, aliquam pharetra ligula. 
+Donec lacinia augue interdum bibendum hendrerit. Donec mi ipsum, malesuada at tortor non, mattis maximus risus.
+
+Donec facilisis neque quis luctus interdum. 
+Vestibulum bibendum convallis justo, a aliquam ipsum cursus vitae. I
+nterdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque sollicitudin 
+convallis aliquet. Vivamus ultrices lacus quis quam volutpat aliquam. Morbi aliquam ut quam eget dapibus. 
+Aliquam ac orci eget ex tempor semper ac quis diam. Mauris urna ipsum, bibendum ut convallis eu, rhoncus eget orci. 
+Morbi varius, libero nec consequat iaculis, mauris purus lobortis metus, quis aliquet urna nisi id mi.
+

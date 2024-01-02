@@ -1,0 +1,18 @@
+Ini adalah catatan PRPL 
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget nunc vel leo placerat laoreet vitae ac orci. 
+Integer vulputate vehicula libero ac venenatis. Vestibulum mattis, libero bibendum dapibus blandit, nisl justo 
+cursus odio, pretium blandit tellus lorem non augue. Nullam nec nunc gravida, mollis tellus feugiat, interdum quam. 
+Mauris quis ante id urna varius aliquet. Donec efficitur ligula eget lacus tristique, sed placerat erat elementum. 
+Fusce sodales sapien ut fermentum porttitor. Sed ullamcorper, quam non congue porttitor, dui arcu vehicula velit, at 
+mattis mauris felis non est. Mauris posuere est vitae nisl rhoncus, sed feugiat augue interdum. Maecenas accumsan metus 
+eget dui eleifend consectetur.
+
+Curabitur ut felis neque. Fusce eget nibh eu odio consequat tempus. Nunc vulputate lacinia lacinia. 
+Phasellus vestibulum in nisl sit amet dignissim. Aliquam nec consectetur arcu. Aliquam elementum lectus odio, 
+imperdiet egestas tortor eleifend ac. Ut accumsan in metus nec mattis. Aenean ultricies, diam at elementum placerat, 
+erat nunc fermentum massa, in viverra purus nibh eu justo. Praesent sapien nibh, placerat eu viverra id, dignissim ut 
+risus. Vestibulum fermentum velit quis dolor sodales pulvinar. Sed interdum semper purus, non tempus quam luctus et. 
+Praesent id turpis nulla. Etiam fermentum quam eleifend nunc vehicula imperdiet. Nam hendrerit tellus sed ligula 
+dignissim, porttitor faucibus massa sollicitudin.
+

@@ -31,15 +31,14 @@ class Pg_log(Screen):
             self.manager.current = "Pg_main"
             self.ids.usrnme.text = ""
             self.ids.pswd.text = ""
+            file_path = 'Database.csv'
+            fcsv = pd.read_csv(file_path)
+            self.take_user = fcsv['User'][test]
+            self.take_mail = fcsv['Email'][test]
         else:
             Pop_NF().open()
             self.ids.usrnme.text = ""
             self.ids.pswd.text = ""
-
-        file_path = 'Database.csv'
-        fcsv = pd.read_csv(file_path)
-        self.take_user = fcsv['User'][test]
-        self.take_mail = fcsv['Email'][test]
 
 class Pop_NF(MDDialog):
     pass
@@ -90,7 +89,7 @@ class Pg_product(Screen):
         self.ids.product_name.pos_hint = {'top': .6, 'center_x': .19}
         self.ids.product_desc.text = 'Ini adalah catatan materi mata kuliah Dasar Pemrograman \ntahun ajaran 2023-2024 \nsemester satu (1) \nCatatan ini secara garis besar memberikan pemahaman mengenai lorem ipsum....'
         self.ids.product_desc.pos_hint = {'top': .4, 'center_x': .5}
-        self.ids.Download_file.bind(on_press=self.downl_p2) 
+        self.ids.Download_file.bind(on_press = self.downl_p2)
 
     def produk_3 (self):
         self.manager.current = 'Pg_product'
@@ -101,7 +100,7 @@ class Pg_product(Screen):
 
     def downl_p2 (self):
         src = 'https://raw.githubusercontent.com/AigrettaM/basProgram/main/catatan%20daspro.txt'
-        DF(self, src)
+        DF(src)
 
 class Dialog_apre(MDDialog):
     pass
